@@ -1,0 +1,61 @@
+@import 'vars';
+@import 'mixins';
+
+$caseStudyBackgrounds: (
+  $blue,
+  $orange,
+  $mauve,
+  $orange,
+  $mauve,
+  $blue,
+  $mauve,
+  $blue,
+  $orange
+);
+
+$caseStudyRotations: (-1.84deg, 1.5deg, -1.37deg, 1deg, -2deg, 2deg);
+
+.caseStudyGrid {
+  display: grid;
+  row-gap: 30px;
+}
+
+.caseStudy {
+  position: relative;
+  @include paddingVertical(40px);
+  @include paddingHorizontal(40px);
+  @include flexCenter;
+
+  &::before {
+    content: '';
+    @include absoluteFill;
+  }
+
+  @for $i from 1 through length($caseStudyBackgrounds) {
+    &:nth-child(#{length($caseStudyBackgrounds)}n + #{$i})::before {
+      background-color: nth($caseStudyBackgrounds, $i);
+    }
+  }
+  @for $i from 1 through length($caseStudyRotations) {
+    &:nth-child(#{length($caseStudyRotations)}n + #{$i})::before {
+      transform: rotate(nth($caseStudyRotations, $i));
+    }
+  }
+
+  div {
+    @include relativeAbove;
+  }
+
+  p {
+    max-width: 60%;
+    @include marginVertical(16px);
+    @include marginHorizontal(auto);
+  }
+}
+
+@include tablet {
+  .caseStudyGrid {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+  }
+}

@@ -1,0 +1,104 @@
+@import 'vars';
+@import 'mixins';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlayMenu {
+  z-index: 3;
+  overflow: auto;
+  transition: transform 250ms;
+  transform: translateY(-100%);
+  background: {
+    color: $orange;
+    image: url('/icons/menuBg.svg');
+    repeat: no-repeat;
+    position: center;
+    size: contain;
+  }
+  @include fixedFill;
+}
+
+.close {
+  display: none;
+  position: fixed;
+  z-index: 4;
+  margin: -2px 0 0 4px;
+  @include top(34px, 50px);
+  @include left(24px, 50px);
+  @include buttonReset;
+
+  svg {
+    display: block;
+  }
+}
+
+:global(html.menuOpen) {
+  .overlayMenu,
+  .close {
+    display: block;
+    transition: none;
+    transform: none;
+    animation: {
+      name: fadeIn;
+      duration: 250ms;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+}
+
+.inner {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+}
+
+.logo {
+  @include paddingVertical(12px, 36px);
+}
+
+.mainMenu {
+  @include heading;
+  @include fontSize(50px, 120px);
+
+  a {
+    transition: {
+      property: color;
+      duration: 200ms;
+    }
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+.footerMenu {
+  max-width: 600px;
+  @include fontSize(18px);
+  @include marginTop(40px, 30px);
+  @include marginBottom(40px, 60px);
+  @include marginHorizontal(auto);
+
+  li {
+    display: inline-block;
+    @include marginHorizontal(10px);
+    @include marginVertical(5px);
+  }
+}
+
+@include tablet {
+  .overlayMenu {
+    background-image: url('/icons/menuBgTablet.svg');
+  }
+}

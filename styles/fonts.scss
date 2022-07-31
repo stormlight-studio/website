@@ -1,0 +1,39 @@
+@import 'vars';
+
+@font-face {
+  font-family: $fontFoundersGrotesk;
+  src: url('/fonts/FoundersGrotesk-Light.woff2') format('woff2');
+  font-weight: 100;
+}
+@font-face {
+  font-family: $fontFoundersGrotesk;
+  src: url('/fonts/FoundersGrotesk-Regular.woff2') format('woff2');
+  font-weight: 300;
+}
+@font-face {
+  font-family: $fontFoundersGrotesk;
+  src: url('/fonts/FoundersGrotesk-Medium.woff2') format('woff2');
+  font-weight: normal;
+}
+@font-face {
+  font-family: $fontFoundersGrotesk;
+  src: url('/fonts/FoundersGrotesk-Semibold.woff2') format('woff2');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: $fontCircular;
+  src: url('/fonts/CircularStd-Book.woff2') format('woff2');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: $fontTungsten;
+  src: url('/fonts/Tungsten-Black.woff2') format('woff2');
+  font-weight: normal;
+}
+@font-face {
+  font-family: $fontTungsten;
+  src: url('/fonts/Tungsten-Bold.woff2') format('woff2');
+  font-weight: bold;
+}

@@ -1,0 +1,11 @@
+{
+  "spaceId": "1px9fz6yx651",
+  "environmentId": "master",
+  "managementToken": "CFPAT-WCTJoegoHGxbQgx9tMkFjsBnj28yGaO0L62p8jJkOuM",
+  "saveFile": true,
+  "contentFile": "export.json",
+  "exportDir": "generated",
+  "skipContent": true,
+  "skipRoles": true,
+  "skipWebhooks": true
+}

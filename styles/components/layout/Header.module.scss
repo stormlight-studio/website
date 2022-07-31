@@ -1,0 +1,85 @@
+@import 'vars';
+@import 'mixins';
+
+.header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  transition: transform 250ms, background-color 250ms, padding 250ms;
+  @include paddingVertical(24px, 40px);
+  @include paddingHorizontal(24px, 50px);
+
+  &:global(.down:not(.scrolledTop)) {
+    transform: translateY(-100%);
+  }
+
+  &:global(:not(.scrolledTop)) {
+    background-color: $white;
+    @include paddingVertical(24px);
+  }
+}
+
+.homeLink {
+  @include heading;
+  @include fontSize(50px, 60px);
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+:global(html.whiteHeader) {
+  .header {
+    &:global(:not(.up)),
+    &:global(.up.scrolledTop) {
+      a,
+      svg {
+        color: $white;
+      }
+    }
+  }
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.menuToggle {
+  justify-self: flex-start;
+  appearance: none;
+  margin: 0;
+  @include buttonReset;
+
+  svg {
+    display: block;
+    line {
+      stroke: currentColor;
+    }
+  }
+}
+
+@include tabletOnly {
+  .header {
+    nav {
+      display: none;
+    }
+  }
+}
+
+@include desktop {
+  .header {
+    nav {
+      justify-self: flex-end;
+      font-size: 18px;
+
+      li {
+        display: inline-block;
+
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

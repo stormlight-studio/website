@@ -1,0 +1,15 @@
+$removeBlockPaddingTop: (
+  'quote': (
+    'contactForm',
+    'cvUploader',
+    'bookACall',
+  ),
+);
+
+@each $block, $followingBlocks in $removeBlockPaddingTop {
+  @for $i from 1 through length($followingBlocks) {
+    [data-block='#{$block}'] + [data-block='#{nth($followingBlocks, $i)}'] {
+      @include paddingTop(0, 0);
+    }
+  }
+}

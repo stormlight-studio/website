@@ -1,0 +1,36 @@
+@import 'vars';
+@import 'mixins';
+
+.footer {
+  @include relativeAbove;
+  @include marginVertical(40px, 100px);
+
+  nav {
+    @include fontSize(18px);
+    @include marginVertical(40px);
+
+    li {
+      display: inline-block;
+      @include marginHorizontal(10px);
+      @include marginVertical(5px);
+    }
+  }
+
+  p {
+    font-weight: 300;
+    @include marginTop(26px);
+  }
+}
+
+@include mobileOnly {
+  .footer {
+  }
+}
+
+:global(html.menuOpen) {
+  .footer {
+    @include mobileOnly {
+      display: none;
+    }
+  }
+}

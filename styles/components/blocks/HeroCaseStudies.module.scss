@@ -1,0 +1,11 @@
+@import 'vars';
+@import 'mixins';
+
+.heroCaseStudies {
+  @include paddingVertical(120px, 210px);
+
+  h1 {
+    @include h1;
+    @include marginBottom(50px, 80px);
+  }
+}

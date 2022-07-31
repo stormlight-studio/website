@@ -1,0 +1,41 @@
+@import 'mixins';
+
+body {
+  line-height: 1.2;
+  background-color: $white;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.bgFill {
+  @include absoluteFill;
+  @include imageCover;
+}
+
+.textLink {
+  @include textLink;
+  &:not(:hover) {
+    text-decoration: underline;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}

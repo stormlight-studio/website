@@ -1,0 +1,19 @@
+@import 'mixins';
+
+.content {
+  h2 {
+    @include h2;
+  }
+
+  &:global(.boldText) {
+    p {
+      font-weight: normal;
+    }
+  }
+}
+
+:global(main) {
+  > .content {
+    @include paddingTop(100px, 150px);
+  }
+}

@@ -1,0 +1,17 @@
+@import 'vars';
+@import 'mixins';
+
+html {
+  text-align: center;
+  @include fontFoundersGrotesk;
+  @include fontSize(18px, 20px);
+}
+
+p {
+  line-height: 1.2;
+}
+
+b,
+strong {
+  font-weight: bold;
+}

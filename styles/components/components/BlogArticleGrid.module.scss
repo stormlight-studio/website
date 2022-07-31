@@ -1,0 +1,48 @@
+@import 'vars';
+@import 'mixins';
+
+.categories {
+  text-align: left;
+  @include marginTop(80px, 130px);
+  @include marginBottom(50px);
+
+  li {
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 5px solid transparent;
+    transition: {
+      property: border-color;
+      duration: 300ms;
+    }
+
+    &:not(:last-child) {
+      @include marginRight(16px);
+    }
+
+    &:global(.active) {
+      border-bottom-color: $black;
+    }
+  }
+
+  button {
+    color: $black;
+    display: block;
+    @include buttonReset;
+    @include heading;
+    @include fontSize(24px, 32px);
+  }
+}
+
+@include tablet {
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 54px;
+  }
+}
+
+@include desktop {
+  .articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

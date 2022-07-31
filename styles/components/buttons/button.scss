@@ -1,0 +1,35 @@
+.button {
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid $black;
+  transition: {
+    property: color, background-color;
+    duration: 200ms;
+  }
+  @include fontSize(20px);
+  @include paddingVertical(11px);
+  @include paddingHorizontal(30px);
+
+  &:not(.inverted) {
+    color: $white;
+    background-color: $black;
+    &:hover {
+      color: $black;
+      background-color: transparent;
+    }
+  }
+
+  &.inverted {
+    color: $black;
+    &:hover {
+      color: $white;
+      background-color: $black;
+    }
+  }
+
+  &.small {
+    @include fontSize(16px, 20px);
+  }
+}

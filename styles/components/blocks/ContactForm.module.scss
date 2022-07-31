@@ -1,0 +1,59 @@
+@import 'vars';
+@import 'mixins';
+
+.contactForm {
+  @include paddingTop(180px, 220px);
+}
+
+.contactPoints {
+  @include marginBottom(60px, 120px);
+  div {
+    margin-bottom: 60px;
+  }
+
+  small {
+    display: block;
+    @include fontSize(24px);
+    @include marginBottom(14px);
+  }
+
+  a:global(:not(.textLink)),
+  p {
+    @include heading;
+    @include fontSize(40px, 60px);
+    text-transform: none;
+    @include marginBottom(14px);
+  }
+}
+
+@include tablet {
+  .contactPoints {
+    flex-wrap: wrap;
+    @include flexFullCenter;
+
+    div {
+      width: 40%;
+    }
+  }
+}
+
+@include desktop {
+  .contactForm {
+    form {
+      display: grid;
+      grid-template-areas:
+        'firstName lastName'
+        'email phone'
+        'message message'
+        'button button';
+      column-gap: 20px;
+
+      textarea {
+        grid-area: message;
+      }
+      div {
+        grid-area: button;
+      }
+    }
+  }
+}

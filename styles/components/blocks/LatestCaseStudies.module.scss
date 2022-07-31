@@ -1,0 +1,32 @@
+@import 'vars';
+@import 'mixins';
+
+.latestCaseStudies {
+  @include paddingVertical(50px, 100px);
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include marginTop(30px, 20px);
+    @include marginBottom(15px, 25px);
+  }
+}
+
+.caseStudy {
+  &:first-child {
+    background-color: $blue;
+  }
+  &:nth-child(2) {
+    background-color: $orange;
+  }
+  &:nth-child(3) {
+    background-color: $mauve;
+  }
+}
+
+.link {
+  @include marginTop(20px);
+  @include marginBottom(56px);
+}

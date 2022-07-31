@@ -1,0 +1,386 @@
+@import 'vars';
+
+@mixin breakpoint($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobileOnly {
+  @media (max-width: $md - 1) {
+    @content;
+  }
+}
+
+@mixin smallTablet {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin tabletOnly {
+  @media (max-width: $lg - 1) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
+
+@mixin propertyResponsive($property, $small, $medium, $large) {
+  @if ($medium or $large) {
+    @include mobileOnly {
+      #{$property}: $small;
+    }
+  } @else {
+    #{$property}: $small;
+  }
+
+  @if $medium {
+    @include breakpoint($md) {
+      #{$property}: $medium;
+    }
+  }
+
+  @if ($large) {
+    @include breakpoint($lg) {
+      #{$property}: $large;
+    }
+  }
+}
+
+@mixin lineHeight($small, $medium: false, $large: false) {
+  @include propertyResponsive('line-height', $small, $medium, $large);
+}
+@mixin fontSize($small, $medium: false, $large: false) {
+  @include propertyResponsive('font-size', $small, $medium, $large);
+}
+@mixin fontFoundersGrotesk {
+  font-family: $fontFoundersGrotesk;
+}
+@mixin fontTungsten {
+  font-family: $fontTungsten;
+}
+@mixin fontCircular {
+  font-family: $fontCircular;
+}
+@mixin fontBold {
+  font-weight: bold;
+}
+
+@mixin marginTop($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-top', $small, $medium, $large);
+}
+@mixin marginBottom($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-bottom', $small, $medium, $large);
+}
+@mixin marginRight($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-right', $small, $medium, $large);
+}
+@mixin marginLeft($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-left', $small, $medium, $large);
+}
+@mixin marginVertical($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-top', $small, $medium, $large);
+  @include propertyResponsive('margin-bottom', $small, $medium, $large);
+}
+@mixin marginHorizontal($small, $medium: false, $large: false) {
+  @include propertyResponsive('margin-left', $small, $medium, $large);
+  @include propertyResponsive('margin-right', $small, $medium, $large);
+}
+
+@mixin padding($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding', $small, $medium, $large);
+}
+@mixin paddingLeft($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-left', $small, $medium, $large);
+}
+@mixin paddingRight($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-right', $small, $medium, $large);
+}
+@mixin paddingTop($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-top', $small, $medium, $large);
+}
+@mixin paddingBottom($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-bottom', $small, $medium, $large);
+}
+@mixin paddingVertical($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-top', $small, $medium, $large);
+  @include propertyResponsive('padding-bottom', $small, $medium, $large);
+}
+@mixin paddingHorizontal($small, $medium: false, $large: false) {
+  @include propertyResponsive('padding-left', $small, $medium, $large);
+  @include propertyResponsive('padding-right', $small, $medium, $large);
+}
+
+@mixin height($small, $medium: false, $large: false) {
+  @include propertyResponsive('height', $small, $medium, $large);
+}
+@mixin width($small, $medium: false, $large: false) {
+  @include propertyResponsive('width', $small, $medium, $large);
+}
+@mixin maxWidth($small, $medium: false, $large: false) {
+  @include propertyResponsive('max-width', $small, $medium, $large);
+}
+
+@mixin bottom($small, $medium: false, $large: false) {
+  @include propertyResponsive('bottom', $small, $medium, $large);
+}
+@mixin left($small, $medium: false, $large: false) {
+  @include propertyResponsive('left', $small, $medium, $large);
+}
+@mixin right($small, $medium: false, $large: false) {
+  @include propertyResponsive('right', $small, $medium, $large);
+}
+@mixin top($small, $medium: false, $large: false) {
+  @include propertyResponsive('top', $small, $medium, $large);
+}
+
+@mixin backgroundSize($small, $medium: false, $large: false) {
+  @include propertyResponsive('background-size', $small, $medium, $large);
+}
+@mixin backgroundPosition($small, $medium: false, $large: false) {
+  @include propertyResponsive('background-position', $small, $medium, $large);
+}
+
+@mixin backgroundCover($position: center) {
+  background-size: cover;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+@mixin container {
+  width: $containerWidth;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin containerBleed {
+  margin-left: -#{$padding};
+  margin-right: -#{$padding};
+}
+
+@mixin buttonReset {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexStart {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin flexEnd {
+  display: flex;
+  align-items: flex-end;
+}
+
+@mixin flexFullCenter {
+  @include flexCenter;
+  justify-content: center;
+}
+
+@mixin flexSpaceBetween {
+  @include flexCenter;
+  justify-content: space-between;
+}
+
+@mixin imageCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin absoluteFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@mixin fixedFill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin relativeAbove {
+  position: relative;
+  z-index: 1;
+}
+
+@mixin textLink {
+  color: $purple;
+  font-weight: bold;
+  text-decoration: underline;
+  @include fontSize(20px);
+}
+
+@mixin heading {
+  text-transform: uppercase;
+  @include fontTungsten;
+  @include fontBold;
+  @include lineHeight(0.85, 0.8);
+}
+
+@mixin h1 {
+  @include heading;
+  @include fontSize(64px, 124px);
+}
+@mixin h2 {
+  @include heading;
+  @include fontSize(64px, 100px);
+}
+@mixin h3 {
+  @include heading;
+  @include fontSize(60px);
+}
+@mixin h4 {
+  @include heading;
+  @include fontSize(45px, 60px);
+}
+
+@mixin titleLabel {
+  text-transform: none;
+  font-weight: normal;
+  @include fontFoundersGrotesk;
+  @include fontSize(20px, 24px);
+  @include marginBottom(15px, 30px);
+}
+
+@mixin backgroundColours {
+  &:global(.blue) {
+    background-color: $blue;
+  }
+  &:global(.purple) {
+    background-color: $mauve;
+  }
+  &:global(.orange) {
+    background-color: $orange;
+  }
+}
+
+@mixin nthColourBefore {
+  :global(.before) {
+    content: '';
+    will-change: transform, background-color;
+    @include absoluteFill;
+    transition: {
+      property: transform, background-color;
+      duration: 600ms;
+    }
+  }
+}
+
+@mixin nthColours($nestedSelector: null) {
+  @if ($nestedSelector) {
+    #{$nestedSelector} {
+      @include nthColourBefore;
+    }
+  } @else {
+    @include nthColourBefore;
+  }
+
+  $nthColours: ($blue, $mauve, $orange);
+  @for $i from 1 through length($nthColours) {
+    &[data-nth='#{$i - 1}'],
+    &:not([data-nth]):nth-child(#{$i}) {
+      @if ($nestedSelector) {
+        #{$nestedSelector} {
+          :global(.before) {
+            background-color: nth($nthColours, $i);
+          }
+        }
+      } @else {
+        :global(.before) {
+          background-color: nth($nthColours, $i);
+        }
+      }
+    }
+  }
+
+  :global(.above) {
+    @include relativeAbove;
+  }
+}
+
+@mixin listSplitter {
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      &::after {
+        content: '|';
+        @include marginHorizontal(6px);
+      }
+    }
+  }
+}
+
+@mixin shareSticky {
+  position: absolute;
+  height: 100%;
+  margin-top: 6px;
+  margin-left: -100px;
+
+  > div {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+@mixin blogArticleCategoriesPurple {
+  font-weight: 300;
+  color: $purple;
+  text-transform: uppercase;
+  @include fontSize(16px);
+  @include listSplitter;
+}
+
+@mixin barStyles($barStyle, $index) {
+  width: #{list.nth(map.get($barStyle, 'width'), $index) + '%'};
+  height: #{list.nth(map.get($barStyle, 'height'), $index) + 'px'};
+  top: #{list.nth(map.get($barStyle, 'top'), $index) + '%'};
+  left: #{list.nth(map.get($barStyle, 'left'), $index) + '%'};
+  transform: rotate(#{list.nth(map.get($barStyle, 'rotate'), $index)}deg);
+  background-color: map.get($barStyle, 'color');
+}
+
+@mixin viewportHeight {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin atLeastViewportHeight {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin bgBars {
+  position: absolute;
+  width: 100%;
+
+  svg {
+    max-height: 125%;
+  }
+}

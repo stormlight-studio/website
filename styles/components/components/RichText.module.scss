@@ -1,0 +1,108 @@
+@import 'vars';
+@import 'mixins';
+
+.richText {
+  &:global(:not(.centerText)) {
+    text-align: left;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:not(:first-child) {
+      @include marginTop(30px);
+    }
+    &:not(:last-child) {
+      @include marginBottom(20px);
+    }
+  }
+
+  h1 {
+    @include fontSize(28px, 48px);
+  }
+
+  h2 {
+    @include fontSize(22px, 36px);
+  }
+
+  h3 {
+    @include fontSize(20px, 32px);
+  }
+
+  h4 {
+    @include fontSize(18px, 28px);
+  }
+
+  h6 {
+    @include fontSize(15px);
+
+    &:not(:first-child) {
+      @include marginTop(0);
+    }
+  }
+
+  p {
+    font-weight: 300;
+    @include fontSize(18px, 20px);
+    @include lineHeight(1.4);
+
+    &:not(:last-child) {
+      @include marginBottom(20px);
+    }
+
+    &:empty {
+      &:last-child {
+        display: none;
+      }
+      &::before {
+        content: '\00a0';
+      }
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    b {
+      font-weight: normal;
+    }
+  }
+
+  blockquote {
+    color: $orange;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1;
+    @include fontSize(24px, 32px);
+    @include marginVertical(40px, 76px);
+    @include paddingHorizontal(20px, 40px);
+
+    p {
+      font: inherit;
+
+      &:last-child {
+        font-weight: normal;
+        color: $orangeLight;
+        @include fontSize(18px, 20px);
+      }
+    }
+  }
+
+  b {
+    font-weight: bold;
+  }
+
+  a:global(:not(.button)) {
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style: disc;
+    @include marginLeft(20px);
+    @include marginBottom(20px);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "cms-setup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "export-from-space": "contentful space export --config export-from-space.json && node prepareContentModels.js",
+    "import-to-space": "contentful space import --config import-to-space.json"
+  }
+}

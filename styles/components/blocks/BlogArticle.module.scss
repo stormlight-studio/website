@@ -1,0 +1,50 @@
+@import 'vars';
+@import 'mixins';
+
+.blogArticle {
+  @include paddingTop(180px, 220px);
+
+  h1 {
+    @include heading;
+    @include fontSize(48px, 100px);
+  }
+}
+
+.image {
+  @include marginBottom(40px, 80px);
+}
+
+.author {
+  @include fontSize(20px, 28px);
+  @include marginVertical(20px);
+}
+
+.categories {
+  @include blogArticleCategoriesPurple;
+  @include marginBottom(55px, 60px);
+}
+
+.exploreMore {
+  h3 {
+    @include heading;
+    @include fontSize(48px, 60px);
+    @include marginTop(108px, 200px);
+    @include marginBottom(50px, 80px);
+  }
+}
+
+@include tabletOnly {
+  .share {
+    display: none;
+  }
+}
+
+@include desktop {
+  .content {
+    position: relative;
+  }
+
+  .share {
+    @include shareSticky;
+  }
+}

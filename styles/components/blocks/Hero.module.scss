@@ -1,0 +1,42 @@
+@import 'vars';
+@import 'mixins';
+
+.heroWrapper {
+  position: relative;
+}
+
+.hero {
+  overflow: hidden;
+  @include atLeastViewportHeight;
+  @include paddingTop(120px, 210px);
+  @include paddingBottom(35px, 50px);
+  @include flexCenter;
+
+  h3 {
+    @include titleLabel;
+  }
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    max-width: 404px;
+    @include fontSize(18px, 20px);
+    @include marginTop(20px);
+    @include marginBottom(30px, 50px);
+    @include marginHorizontal(auto);
+  }
+}
+
+.inner {
+  @include relativeAbove;
+}
+
+.link {
+  @include marginTop(20px);
+}
+
+.logo {
+  @include marginTop(50px);
+}

@@ -1,0 +1,100 @@
+@import 'vars';
+@import 'mixins';
+
+.title {
+  h3 {
+    @include titleLabel;
+  }
+  h1 {
+    @include h1;
+  }
+  h4 {
+    @include h2;
+  }
+}
+
+.formBox {
+  background-color: $lightGrey;
+  @include marginVertical(50px, 100px);
+  @include paddingVertical(30px, 60px);
+  @include paddingHorizontal(40px, 160px);
+
+  input,
+  textarea,
+  select {
+    background-color: $white;
+    border: none;
+    font-size: 20px;
+    padding: 6px 16px;
+    margin: 0 0 20px 0;
+    width: 100%;
+    border-radius: 0;
+    font-weight: 300;
+    line-height: 1.4;
+    @include fontFoundersGrotesk;
+
+    &::placeholder,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder {
+      color: $middleGrey;
+    }
+  }
+
+  select {
+    &:invalid {
+      color: $middleGrey;
+    }
+    option {
+      font-weight: 300;
+    }
+  }
+
+  button {
+    @include marginTop(30px);
+  }
+}
+
+.formTitle {
+  @include h4;
+}
+
+.formDescription {
+  max-width: 70%;
+  @include marginVertical(30px);
+  @include marginHorizontal(auto);
+}
+
+.loading {
+  @include width(100px, 200px);
+  @include height(100px, 200px);
+}
+
+.fileDrop {
+  position: relative;
+  color: $mauve;
+  border: 2px dashed $mauve;
+  cursor: pointer;
+  @include fontSize(18px, 20px);
+  @include flexFullCenter;
+  @include paddingVertical(35px);
+  @include paddingHorizontal(15%);
+
+  * {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: rgba($mauve, 0.1);
+  }
+
+  span {
+    display: block;
+  }
+
+  input {
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    @include absoluteFill;
+  }
+}
