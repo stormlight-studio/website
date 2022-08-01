@@ -23,7 +23,6 @@
 .bg {
   @include absoluteFill;
   @include imageCover;
-  width: auto;
 }
 
 .inner {
