@@ -2,29 +2,39 @@
 @import 'mixins';
 
 .footer {
-  @include relativeAbove;
-  @include marginVertical(40px, 100px);
+  color: $white;
+  background-color: $black;
+  text-align: center;
+  @include paddingVertical(30px, 50px);
 
   nav {
-    @include fontSize(18px);
-    @include marginVertical(40px);
-
-    li {
-      display: inline-block;
-      @include marginHorizontal(10px);
-      @include marginVertical(5px);
-    }
+    color: $middleGrey;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    @include fontSize(12px);
+    @include marginTop(20px);
   }
 
-  p {
-    font-weight: 300;
-    @include marginTop(26px);
+  form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    @include marginBottom(50px, 100px);
+
+    div {
+      display: flex;
+    }
+
+    button {
+      margin-top: 0;
+    }
   }
 }
 
-@include mobileOnly {
-  .footer {
-  }
+.logo {
+  max-width: 100px;
 }
 
 :global(html.menuOpen) {

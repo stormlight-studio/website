@@ -5,6 +5,7 @@
   position: fixed;
   z-index: 2;
   width: 100%;
+  color: $white;
   transition: transform 250ms, background-color 250ms, padding 250ms;
   @include paddingVertical(24px, 40px);
   @include paddingHorizontal(24px, 50px);
@@ -15,15 +16,8 @@
 
   &:global(:not(.scrolledTop)) {
     background-color: $white;
+    color: $black;
     @include paddingVertical(24px);
-  }
-}
-
-.homeLink {
-  @include heading;
-  @include fontSize(50px, 60px);
-  &:hover {
-    text-decoration: none;
   }
 }
 
@@ -40,9 +34,16 @@
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  svg {
+    height: 40px;
+    display: block;
+  }
 }
 
 .menuToggle {
@@ -68,6 +69,9 @@
 }
 
 @include desktop {
+  .menuToggle {
+    display: none;
+  }
   .header {
     nav {
       justify-self: flex-end;

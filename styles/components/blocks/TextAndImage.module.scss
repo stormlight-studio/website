@@ -1,0 +1,30 @@
+@import 'vars';
+@import 'mixins';
+
+.textAndImage {
+  text-align: center;
+  background-color: $black;
+  color: $white;
+  @include paddingTop(40px, 80px);
+
+  h3 {
+    @include titleLabel;
+  }
+}
+
+.text {
+  max-width: 60%;
+  @include marginHorizontal(auto);
+  @include marginTop(30px);
+  @include marginBottom(60px, 100px);
+
+  p {
+    @include fontSize(22px, 38px);
+  }
+}
+
+.image {
+  img {
+    display: block;
+  }
+}

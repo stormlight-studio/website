@@ -33,16 +33,41 @@
   }
 }
 
-@include tablet {
-  .articles {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 54px;
+.blogArticle {
+  @include paddingVertical(30px, 50px);
+
+  h2 {
+    @include titleLabel;
+  }
+  h3 {
+    @include fontSize(22px, 38px);
+    @include marginTop(10px, 20px);
+    @include marginBottom(20px, 30px);
+  }
+  p {
+    color: $middleGrey;
   }
 }
 
-@include desktop {
-  .articles {
-    grid-template-columns: repeat(3, 1fr);
+@include mobileOnly {
+  .blogArticle {
+    p {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@include tablet {
+  .blogArticle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 100px;
+
+    &:nth-child(even) {
+      > div {
+        order: 2;
+      }
+    }
   }
 }

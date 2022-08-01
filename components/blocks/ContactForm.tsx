@@ -9,6 +9,7 @@ const ContactForm = (props: IContactForm) => {
 
   return (
     <Form
+      type="contact"
       fields={[
         {
           name: 'name',
@@ -38,7 +39,6 @@ const ContactForm = (props: IContactForm) => {
         },
       ]}
       className={styles.contactForm}
-      block="contactForm"
       {...props}
     >
       <div className={styles.contactPoints}>

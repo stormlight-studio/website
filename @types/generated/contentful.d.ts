@@ -14,17 +14,14 @@ export interface IBlogArticle {
   /** URL */
   url: string;
 
+  /** Summary */
+  summary: string;
+
   /** Image */
   image: Asset;
 
   /** Show Image On Article Page */
   showImageOnArticlePage?: boolean | undefined;
-
-  /** Image Quote */
-  imageQuote?: string | undefined;
-
-  /** Image Quote Colour */
-  imageQuoteColour?: 'Blue' | 'Purple' | 'Orange' | undefined;
 
   /** Author */
   author: string;
@@ -42,7 +39,15 @@ export interface IBlogArticle {
   associatedBlogArticles: IBlogArticle[];
 
   /** Blocks */
-  blocks?: (IContactForm | IContent | ICtaBanner)[] | undefined;
+  blocks?:
+    | (
+        | IContactForm
+        | IContent
+        | ICtaBanner
+        | ILatestCaseStudies
+        | ITextAndImage
+      )[]
+    | undefined;
 }
 
 export interface IBlogCategory {
@@ -97,7 +102,15 @@ export interface ICaseStudy {
   associatedCaseStudies: ICaseStudy[];
 
   /** Blocks */
-  blocks?: (IContactForm | IContent | ICtaBanner)[] | undefined;
+  blocks?:
+    | (
+        | IContactForm
+        | IContent
+        | ICtaBanner
+        | ILatestCaseStudies
+        | ITextAndImage
+      )[]
+    | undefined;
 }
 
 export interface IColour {
@@ -130,11 +143,8 @@ export interface IContactForm {
   /** Title */
   title: string;
 
-  /** Form Title */
-  formTitle: string;
-
-  /** Form Description */
-  formDescription: string;
+  /** Description */
+  description: string;
 
   /** Success Text */
   successText: string;
@@ -185,20 +195,14 @@ export interface ICtaBanner {
   /** Title */
   title: string;
 
-  /** Subtitle */
-  subtitle?: string | undefined;
-
   /** Description */
-  description: string;
+  description?: string | undefined;
 
   /** Button */
   button: ILink;
 
-  /** Text Link */
-  textLink?: ILink | undefined;
-
-  /** Style */
-  style: 'Primary' | 'Focus';
+  /** Image */
+  image?: Asset | undefined;
 }
 
 export interface IGlobalConfig {
@@ -228,6 +232,9 @@ export interface IGlobalConfig {
 
   /** Menu Items */
   menuItems: ILink[];
+
+  /** Footer Email Form */
+  footerEmailForm: IContactForm;
 
   /** Footer Menu Items */
   footerMenuItems: ILink[];
@@ -317,6 +324,43 @@ export interface IHeroCaseStudies {
   caseStudies?: ICaseStudy[] | undefined;
 }
 
+export interface IImageBanner {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Image */
+  image: Asset;
+}
+
+export interface ILatestBlogArticles {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Blog Articles */
+  blogArticles: IBlogArticle[];
+
+  /** Link */
+  link: ILink;
+}
+
 export interface ILatestCaseStudies {
   /** contentType */
   contentType: string;
@@ -327,11 +371,8 @@ export interface ILatestCaseStudies {
   /** hashId */
   hashId: string;
 
-  /** Title */
-  title: string;
-
-  /** Description */
-  description: string;
+  /** CMS Reference */
+  cmsReference: string;
 
   /** Case Studies */
   caseStudies?: ICaseStudy[] | undefined;
@@ -391,6 +432,153 @@ export interface IPage {
         | IHero
         | IHeroBlog
         | IHeroCaseStudies
+        | IImageBanner
+        | ILatestBlogArticles
+        | ILatestCaseStudies
+        | IQuotes
+        | IStats
+        | ITextAndImage
+        | IThreeColumns
       )[]
     | undefined;
+}
+
+export interface IQuote {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** Name */
+  name: string;
+
+  /** Quote */
+  quote: string;
+
+  /** Company */
+  company: string;
+}
+
+export interface IQuotes {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Quotes */
+  quotes: IQuote[];
+}
+
+export interface IStat {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** Title */
+  title: string;
+
+  /** Number */
+  number: number;
+
+  /** Prefix */
+  prefix?: string | undefined;
+
+  /** Suffix */
+  suffix?: string | undefined;
+}
+
+export interface IStats {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Stats */
+  stats: IStat[];
+}
+
+export interface ITextAndImage {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Text */
+  text: string;
+
+  /** Subtitle */
+  subtitle?: string | undefined;
+
+  /** Image */
+  image: Asset;
+}
+
+export interface IThreeColumnItem {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** Title */
+  title: string;
+
+  /** Description */
+  description: string;
+
+  /** Icon */
+  icon?: Asset | undefined;
+
+  /** Link */
+  link?: ILink | undefined;
+}
+
+export interface IThreeColumns {
+  /** contentType */
+  contentType: string;
+
+  /** cmsId */
+  cmsId: string;
+
+  /** hashId */
+  hashId: string;
+
+  /** CMS Reference */
+  cmsReference: string;
+
+  /** Columns */
+  columns: IThreeColumnItem[];
 }

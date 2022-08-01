@@ -1,0 +1,28 @@
+@import 'vars';
+@import 'mixins';
+
+.columns {
+  display: grid;
+  row-gap: 50px;
+  text-align: center;
+  @include paddingVertical(50px, 100px);
+}
+
+.item {
+  h4 {
+    font-weight: bold;
+    @include marginTop(20px);
+    @include marginBottom(10px);
+  }
+  p {
+    color: $middleGrey;
+  }
+}
+
+@include tablet {
+  .columns {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    column-gap: 70px;
+  }
+}

@@ -6,7 +6,12 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Favicon />
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

@@ -64,14 +64,11 @@
 @mixin fontSize($small, $medium: false, $large: false) {
   @include propertyResponsive('font-size', $small, $medium, $large);
 }
-@mixin fontFoundersGrotesk {
-  font-family: $fontFoundersGrotesk;
+@mixin fontHeading {
+  font-family: $fontHeading;
 }
-@mixin fontTungsten {
-  font-family: $fontTungsten;
-}
-@mixin fontCircular {
-  font-family: $fontCircular;
+@mixin fontBody {
+  font-family: $fontBody;
 }
 @mixin fontBold {
   font-weight: bold;
@@ -230,7 +227,6 @@
 }
 
 @mixin textLink {
-  color: $purple;
   font-weight: bold;
   text-decoration: underline;
   @include fontSize(20px);
@@ -238,9 +234,9 @@
 
 @mixin heading {
   text-transform: uppercase;
-  @include fontTungsten;
+  @include fontHeading;
   @include fontBold;
-  @include lineHeight(0.85, 0.8);
+  @include lineHeight(1);
 }
 
 @mixin h1 {
@@ -261,67 +257,9 @@
 }
 
 @mixin titleLabel {
-  text-transform: none;
-  font-weight: normal;
-  @include fontFoundersGrotesk;
-  @include fontSize(20px, 24px);
-  @include marginBottom(15px, 30px);
-}
-
-@mixin backgroundColours {
-  &:global(.blue) {
-    background-color: $blue;
-  }
-  &:global(.purple) {
-    background-color: $mauve;
-  }
-  &:global(.orange) {
-    background-color: $orange;
-  }
-}
-
-@mixin nthColourBefore {
-  :global(.before) {
-    content: '';
-    will-change: transform, background-color;
-    @include absoluteFill;
-    transition: {
-      property: transform, background-color;
-      duration: 600ms;
-    }
-  }
-}
-
-@mixin nthColours($nestedSelector: null) {
-  @if ($nestedSelector) {
-    #{$nestedSelector} {
-      @include nthColourBefore;
-    }
-  } @else {
-    @include nthColourBefore;
-  }
-
-  $nthColours: ($blue, $mauve, $orange);
-  @for $i from 1 through length($nthColours) {
-    &[data-nth='#{$i - 1}'],
-    &:not([data-nth]):nth-child(#{$i}) {
-      @if ($nestedSelector) {
-        #{$nestedSelector} {
-          :global(.before) {
-            background-color: nth($nthColours, $i);
-          }
-        }
-      } @else {
-        :global(.before) {
-          background-color: nth($nthColours, $i);
-        }
-      }
-    }
-  }
-
-  :global(.above) {
-    @include relativeAbove;
-  }
+  font-size: 13px;
+  text-transform: uppercase;
+  color: $grey;
 }
 
 @mixin listSplitter {
@@ -349,23 +287,6 @@
   }
 }
 
-@mixin blogArticleCategoriesPurple {
-  font-weight: 300;
-  color: $purple;
-  text-transform: uppercase;
-  @include fontSize(16px);
-  @include listSplitter;
-}
-
-@mixin barStyles($barStyle, $index) {
-  width: #{list.nth(map.get($barStyle, 'width'), $index) + '%'};
-  height: #{list.nth(map.get($barStyle, 'height'), $index) + 'px'};
-  top: #{list.nth(map.get($barStyle, 'top'), $index) + '%'};
-  left: #{list.nth(map.get($barStyle, 'left'), $index) + '%'};
-  transform: rotate(#{list.nth(map.get($barStyle, 'rotate'), $index)}deg);
-  background-color: map.get($barStyle, 'color');
-}
-
 @mixin viewportHeight {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -374,13 +295,4 @@
 @mixin atLeastViewportHeight {
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
-}
-
-@mixin bgBars {
-  position: absolute;
-  width: 100%;
-
-  svg {
-    max-height: 125%;
-  }
 }

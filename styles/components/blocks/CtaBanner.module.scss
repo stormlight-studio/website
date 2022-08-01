@@ -1,85 +1,33 @@
 @import 'vars';
 @import 'mixins';
 
-.ctaBannerWrapper {
-  position: relative;
-}
-
 .ctaBanner {
+  position: relative;
+  color: $white;
+  background-color: $pink;
   overflow: hidden;
-  @include paddingTop(160px, 200px);
-  @include paddingBottom(80px, 160px);
-
-  h3 {
-    @include titleLabel;
-  }
+  text-align: center;
+  @include paddingVertical(50px, 100px);
 
   h4 {
-    @include h2;
+    font-weight: bold;
+    @include fontSize(24px, 38px);
   }
 
   h5 {
-    @include marginTop(20px, 30px);
-    @include marginBottom(40px, 50px);
+    @include marginVertical(20px, 30px);
   }
+}
+
+.bg {
+  @include absoluteFill;
+  @include imageCover;
 }
 
 .inner {
   @include relativeAbove;
 }
 
-.link {
+.button {
   @include marginTop(20px);
-}
-
-// Styles
-.primary {
-  .bars {
-    @include bgBars;
-
-    svg {
-      max-width: 100%;
-    }
-  }
-}
-
-.focus {
-  background-color: $white;
-
-  :global {
-    .bar {
-      position: absolute;
-      will-change: transform, top, right, bottom, left;
-      @include height(45px, 68px);
-
-      &:nth-child(1) {
-        background-color: $orange;
-        right: 60%;
-        bottom: 20%;
-        transform: rotate(25deg);
-        @include width(250px, 500px);
-      }
-      &:nth-child(2) {
-        background-color: $blue;
-        right: 65%;
-        top: 10%;
-        transform: rotate(-46deg);
-        @include width(130px, 260px);
-      }
-      &:nth-child(3) {
-        background-color: $mauve;
-        left: 55%;
-        top: 5%;
-        transform: rotate(-10deg);
-        @include width(160px, 320px);
-      }
-      &:nth-child(4) {
-        background-color: $blue;
-        left: 60%;
-        bottom: 20%;
-        transform: rotate(-78deg);
-        @include width(160px, 320px);
-      }
-    }
-  }
 }

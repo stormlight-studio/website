@@ -26,7 +26,6 @@ const OverlayMenu = ({ setIsMenuOpen }: OverlayProps) => {
             <div className={styles.mainMenu}>
               <Menu menuItems={menuItems} />
             </div>
-            <Social />
           </div>
         </Container>
       </div>

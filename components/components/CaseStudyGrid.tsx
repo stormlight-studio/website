@@ -10,13 +10,16 @@ interface CaseStudyGridProps {
 const CaseStudyGrid = ({ caseStudies }: CaseStudyGridProps) => {
   return (
     <div className={styles.caseStudyGrid}>
-      {caseStudies.map(({ url, logo, name, summary }) => (
+      {caseStudies.map(({ title, url, logo, name, summary }) => (
         <div key={url} className={styles.caseStudy}>
           <div>
-            <Image {...logo} alt={name} />
+            <h2>Our work</h2>
+            <h3>
+              <Link href={url} text={title} />
+            </h3>
             <p>{summary}</p>
-            <Link href={url} text="Find out how" className="textLink" />
           </div>
+          <Image {...logo} alt={name} />
         </div>
       ))}
     </div>

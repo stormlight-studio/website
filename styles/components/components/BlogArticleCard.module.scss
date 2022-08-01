@@ -2,58 +2,45 @@
 @import 'mixins';
 
 .blogArticleCard {
-  @include marginBottom(40px, 54px);
+  @include paddingVertical(30px, 50px);
 
-  figure {
-    position: relative;
-
-    &::before {
-      content: '';
-      padding-bottom: 100%;
-      display: block;
-    }
-
-    img {
-      display: block;
-      @include imageCover;
-      @include absoluteFill;
-    }
+  h2 {
+    @include titleLabel;
   }
-
-  h4 {
-    @include fontSize(24px);
-    @include marginTop(20px, 30px);
+  h3 {
+    @include fontSize(22px, 38px);
+    @include marginTop(10px, 20px);
+    @include marginBottom(20px, 30px);
   }
-}
-
-.imageLink {
-  display: block;
-}
-
-.imageQuote {
-  font-weight: bold;
-  line-height: 0.875;
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  @include paddingHorizontal(20px);
-  @include fontSize(32px);
-  @include flexFullCenter;
-}
-
-.imageQuoteBackground {
-  transform: rotate(-4.3deg);
-  @include backgroundColours;
-}
-
-.categories {
-  @include blogArticleCategoriesPurple;
+  p {
+    color: $middleGrey;
+  }
 }
 
 .author {
-  font-weight: 300;
-  @include fontSize(16px);
-  @include marginVertical(14px);
+  @include fontSize(12px, 14px);
+  @include marginTop(20px);
+}
+
+@include mobileOnly {
+  .blogArticleCard {
+    p {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@include tablet {
+  .blogArticleCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 100px;
+
+    &:nth-child(even) {
+      > div {
+        order: 2;
+      }
+    }
+  }
 }

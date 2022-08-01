@@ -2,10 +2,6 @@
 @import 'mixins';
 
 .richText {
-  &:global(:not(.centerText)) {
-    text-align: left;
-  }
-
   h1,
   h2,
   h3,
@@ -73,10 +69,8 @@
   }
 
   blockquote {
-    color: $orange;
     text-align: center;
     font-weight: bold;
-    line-height: 1;
     @include fontSize(24px, 32px);
     @include marginVertical(40px, 76px);
     @include paddingHorizontal(20px, 40px);
@@ -86,7 +80,6 @@
 
       &:last-child {
         font-weight: normal;
-        color: $orangeLight;
         @include fontSize(18px, 20px);
       }
     }

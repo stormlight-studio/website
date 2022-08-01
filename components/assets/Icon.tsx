@@ -6,7 +6,7 @@ interface IconProps {
 }
 
 const Icon = forwardRef<SVGElement, IconProps & SVGAttributes<SVGElement>>(
-  ({ className, name }, ref) => {
+  ({ className, name, ...props }, ref) => {
     const icon = icons[name];
     if (!icon) {
       console.warn(`Icon ${name} doesn't exist`);
@@ -16,7 +16,7 @@ const Icon = forwardRef<SVGElement, IconProps & SVGAttributes<SVGElement>>(
 
     const svg = createElement<
       RefAttributes<SVGElement> & SVGAttributes<SVGElement>
-    >(icon, { className, ref });
+    >(icon, { className, ref, ...props });
     return name === 'divider' ? <div className="divider">{svg}</div> : svg;
   }
 );

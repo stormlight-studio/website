@@ -1,0 +1,26 @@
+@import 'vars';
+@import 'mixins';
+
+.swiper {
+  @include paddingVertical(50px, 100px);
+  @include marginVertical(20px);
+}
+
+.quote {
+  text-align: center;
+
+  blockquote {
+    color: $middleGrey;
+    @include fontSize(18px, 28px);
+  }
+  p {
+    color: $middleGrey;
+    column-gap: 30px;
+    @include flexFullCenter;
+    @include marginTop(20px, 30px);
+
+    span:last-child {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import 'mixins';
+
+.imageBanner {
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@include mobileOnly {
+  .image {
+    @include containerBleed;
+  }
+}

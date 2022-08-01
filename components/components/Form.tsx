@@ -14,9 +14,10 @@ import styles from '../../styles/components/components/Form.module.scss';
 import Icon from '../assets/Icon';
 
 type FormStatus = 'user' | 'sending' | 'success' | 'error';
-export type FormType = 'contact';
+export type FormType = 'contact' | 'subscribe';
 
 interface FormProps {
+  type: FormType;
   fields: {
     name: string;
     placeholder: string;
@@ -26,7 +27,6 @@ interface FormProps {
     rows?: number;
     options?: string[];
   }[];
-  block: 'contactForm';
   className?: string;
   children?: ReactNode;
 }
@@ -37,14 +37,13 @@ const Form = (props: ContactFormProps) => {
   const {
     hashId,
     title,
-    formTitle,
-    formDescription,
+    description,
     successText,
     failureText,
     submitText,
+    type,
     fields,
     className,
-    block,
     children,
   } = props;
 
@@ -67,6 +66,8 @@ const Form = (props: ContactFormProps) => {
       }
 
       const formData = new FormData(formRef.current!);
+      formData.append('type', type);
+
       const { status } = await fetch('/api/form', {
         method: 'POST',
         headers: {
@@ -88,7 +89,7 @@ const Form = (props: ContactFormProps) => {
   }, [status, formBoxRef]);
 
   return (
-    <div id={hashId} className={className} data-block={block}>
+    <div id={hashId} className={className}>
       <Container>
         <div ref={formBoxRef} className={styles.formBox}>
           {status === 'sending' && <Icon name="loading" />}
@@ -103,8 +104,8 @@ const Form = (props: ContactFormProps) => {
           )}
           {['user', 'error'].includes(status) && (
             <>
-              <h2 className={styles.formTitle}>{formTitle}</h2>
-              <p className={styles.formDescription}>{formDescription}</p>
+              <h2 className={styles.title}>{title}</h2>
+              <p className={styles.description}>{description}</p>
             </>
           )}
           <form
@@ -158,7 +159,9 @@ const Form = (props: ContactFormProps) => {
               );
             })}
             <div>
-              <button className="button">{submitText}</button>
+              <button type="submit" className="button">
+                {submitText}
+              </button>
               <ReCAPTCHA
                 ref={recaptchaRef}
                 size="invisible"

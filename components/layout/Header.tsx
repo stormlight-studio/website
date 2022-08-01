@@ -58,17 +58,21 @@ const Header = () => {
         })}
       >
         <div className={styles.inner}>
-          <button
-            className={styles.menuToggle}
-            aria-label="Open menu"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <Icon name="menuBurger" />
-          </button>
           <div>
-            <Link href="/" text={siteName} className={styles.homeLink} />
+            <Link href="/" className={styles.logo}>
+              <Icon name="logo" />
+            </Link>
           </div>
-          <Menu menuItems={menuItems} />
+          <div>
+            <button
+              aria-label="Open menu"
+              className={styles.menuToggle}
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <Icon name="menuBurger" />
+            </button>
+            <Menu menuItems={menuItems} />
+          </div>
         </div>
       </header>
       <OverlayMenu setIsMenuOpen={setIsMenuOpen} />

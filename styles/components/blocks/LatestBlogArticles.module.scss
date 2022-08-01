@@ -1,6 +1,10 @@
 @import 'vars';
 @import 'mixins';
 
+.latestBlogArticles {
+  @include paddingVertical(50px, 100px);
+}
+
 .button {
   text-align: center;
   @include marginVertical(20px, 30px);

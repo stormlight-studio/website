@@ -1,61 +1,41 @@
 @import 'vars';
 @import 'mixins';
 
-$caseStudyBackgrounds: (
-  $blue,
-  $orange,
-  $mauve,
-  $orange,
-  $mauve,
-  $blue,
-  $mauve,
-  $blue,
-  $orange
-);
+.caseStudy {
+  @include paddingVertical(30px, 50px);
 
-$caseStudyRotations: (-1.84deg, 1.5deg, -1.37deg, 1deg, -2deg, 2deg);
-
-.caseStudyGrid {
-  display: grid;
-  row-gap: 30px;
+  h2 {
+    @include titleLabel;
+  }
+  h3 {
+    @include fontSize(22px, 38px);
+    @include marginTop(10px, 20px);
+    @include marginBottom(20px, 30px);
+  }
+  p {
+    color: $middleGrey;
+  }
 }
 
-.caseStudy {
-  position: relative;
-  @include paddingVertical(40px);
-  @include paddingHorizontal(40px);
-  @include flexCenter;
-
-  &::before {
-    content: '';
-    @include absoluteFill;
-  }
-
-  @for $i from 1 through length($caseStudyBackgrounds) {
-    &:nth-child(#{length($caseStudyBackgrounds)}n + #{$i})::before {
-      background-color: nth($caseStudyBackgrounds, $i);
+@include mobileOnly {
+  .caseStudy {
+    p {
+      margin-bottom: 30px;
     }
-  }
-  @for $i from 1 through length($caseStudyRotations) {
-    &:nth-child(#{length($caseStudyRotations)}n + #{$i})::before {
-      transform: rotate(nth($caseStudyRotations, $i));
-    }
-  }
-
-  div {
-    @include relativeAbove;
-  }
-
-  p {
-    max-width: 60%;
-    @include marginVertical(16px);
-    @include marginHorizontal(auto);
   }
 }
 
 @include tablet {
-  .caseStudyGrid {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
+  .caseStudy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 100px;
+
+    &:nth-child(even) {
+      > div {
+        order: 2;
+      }
+    }
   }
 }

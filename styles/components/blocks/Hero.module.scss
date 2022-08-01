@@ -1,42 +1,32 @@
 @import 'vars';
 @import 'mixins';
 
-.heroWrapper {
-  position: relative;
-}
-
 .hero {
   overflow: hidden;
+  position: relative;
+  color: $white;
   @include atLeastViewportHeight;
-  @include paddingTop(120px, 210px);
+  @include paddingTop(120px);
   @include paddingBottom(35px, 50px);
   @include flexCenter;
-
-  h3 {
-    @include titleLabel;
-  }
 
   h1 {
     @include h1;
   }
 
   h2 {
-    max-width: 404px;
-    @include fontSize(18px, 20px);
-    @include marginTop(20px);
-    @include marginBottom(30px, 50px);
-    @include marginHorizontal(auto);
+    @include fontSize(24px, 30px);
+    @include marginVertical(20px, 40px);
   }
 }
 
+.bg {
+  @include absoluteFill;
+  @include imageCover;
+  width: auto;
+}
+
 .inner {
+  max-width: 50%;
   @include relativeAbove;
-}
-
-.link {
-  @include marginTop(20px);
-}
-
-.logo {
-  @include marginTop(50px);
 }
