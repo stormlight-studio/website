@@ -32,7 +32,7 @@
   z-index: 4;
   margin: -2px 0 0 4px;
   @include top(34px, 50px);
-  @include left(24px, 50px);
+  @include right(24px, 50px);
   @include buttonReset;
 
   svg {
@@ -69,7 +69,6 @@
   align-items: center;
   @include height(90px, 120px);
   @include maxWidth(50%);
-  @include marginLeft(60px, 80px);
   @include paddingVertical(12px, 36px);
 
   a {

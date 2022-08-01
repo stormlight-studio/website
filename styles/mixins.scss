@@ -241,7 +241,7 @@
 
 @mixin h1 {
   @include heading;
-  @include fontSize(64px, 124px);
+  @include fontSize(44px, 66px);
 }
 @mixin h2 {
   @include heading;

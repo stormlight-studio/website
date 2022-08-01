@@ -9,7 +9,7 @@ const Hero = ({ title, subtitle, description, button }: IHero) => {
   return (
     <div className={styles.hero}>
       <Icon name="logoBg" className={styles.bg} />
-      <Container>
+      <Container wide>
         <div className={styles.inner}>
           {subtitle && <h3>{subtitle}</h3>}
           <h1>

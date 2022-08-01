@@ -15,7 +15,7 @@
   }
 
   h2 {
-    @include fontSize(24px, 30px);
+    @include fontSize(20px, 24px);
     @include marginVertical(20px, 40px);
   }
 }
