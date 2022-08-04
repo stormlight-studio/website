@@ -18,6 +18,27 @@ const nextConfig = {
     });
     return config;
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/holding',
+        permanent: false,
+      },
+      {
+        source: '/:path((?!holding$).*)',
+        has: [
+          {
+            type: 'host',
+            value: 'stormlightstudio.co.uk',
+          },
+        ],
+        destination: '/holding',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
